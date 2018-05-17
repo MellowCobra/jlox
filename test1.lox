@@ -1,0 +1,4 @@
+var program = {
+    // This is a comment
+    var hello = (123 * 1234.5);
+};
