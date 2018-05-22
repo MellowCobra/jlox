@@ -7,11 +7,21 @@ JFLAGS = -g
 
 default: .java.class
 
+build-lox:
+	$(JC) lox/*.java -d dist
+
+build-tool:
+	$(JC) tool/*.java -d dist
+
 clean:
-	$(RM) -r */*.class
+	find . -name '*.class' -delete
+	$(RM) -R dist/*
 
 run-repl:
 	$(J) -classpath dist com/craftinginterpreters/lox/Lox
 
 run-jlox:
 	$(J) -classpath dist com/craftinginterpreters/lox/Lox $(file)
+
+run-gen-ast:
+	$(J) -classpath dist com/craftinginterpreters/tool/GenerateAst lox
