@@ -41,58 +41,100 @@ Terminals
 
 Grammar:
 
-    program         → declaration* EOF
-                    ;
+    program             → declaration* EOF
+                        ;
 
-    declaration     → var_declaration
-                    | statement
-                    ;
+    declaration         → fun_declaration
+                        | var_declaration
+                        | statement
+                        ;
 
-    var_declaration → VAR IDENTIFIER ( EQUAL expression )? SEMICOLON
-                    ;
+    fun_declaration     → FUN function
+                        ;
 
-    statement       → expr_statement
-                    | print_statement
-                    | block
-                    ;
+    function            → IDENTIFIER LEFT_PAREN parameters? RIGHT_PAREN block
+                        ;
 
-    block           → RIGHT_BRACE declaration* LET_BRACE
-                    ;
+    parameters          → IDENTIFIER ( COMMA IDENTIFIER )*
+                        ;
 
-    expr_statement  → expression SEMICOLON
-                    ;
+    var_declaration     → VAR IDENTIFIER ( EQUAL expression )? SEMICOLON
+                        ;
 
-    print_statement → PRINT expression SEMICOLON
-                    ;
+    statement           → expr_statement
+                        | for_statement
+                        | if_statement
+                        | print_statement
+                        | return_statement
+                        | while_statement
+                        | block
+                        ;
 
-    expression      → assignment
-                    ;
+    for_statement       → FOR LEFT_PAREN ( var_decl | expr_statement ) SEMICOLON expression? SEMICOLON expression? RIGHT_PAREN statement
+                        ;
 
-    assignment      → identifier EQUAL assignment
-                    | equality
-                    ;
+    if_statement        → IF LEFT_PAREN expression RIGHT_PAREN statement ( ELSE statement )?
+                        ;
 
-    equality        → comparison ( ( BANG_EQUAL | EQUAL_EQUAL ) comparison )*
-                    ;
+    block               → RIGHT_BRACE declaration* LET_BRACE
+                        ;
 
-    comparison      → addition ( ( GREATER | GREATER_EQUAL | LESS | LESS_EQUAL ) addition )*
-                    ;
+    expr_statement      → expression SEMICOLON
+                        ;
 
-    addition        → multiplication ( ( MINUS | PLUS )  multiplication )*
-                    ;
+    print_statement     → PRINT expression SEMICOLON
+                        ;
 
-    multiplication  → unary ( ( SLASH | STAR ) unary )*
-                    ;
+    while_statement     → WHILE LEFT_PAREN expression RIGHT_PAREN statement
+                        ;
 
-    unary           → ( BANG | MINUS ) unary
-                    | primary
-                    ;
+    return_statement    → RETURN expression? SEMICOLON
+                        ;
 
-    primary         → NUMBER
-                    | STRING
-                    | FALSE
-                    | TRUE
-                    | NIL
-                    | LEFT_PAREN expression RIGHT_PAREN
-                    | IDENTIFIER
-                    ;
+    expression          → assignment
+                        ;
+
+    assignment          → identifier EQUAL assignment
+                        | logic_or
+                        ;
+
+    logic_or            → logic_and ( OR logic_and )*
+                        ;
+
+    logic_and           → equality ( AND equality )*
+                        ;
+
+    equality            → comparison ( ( BANG_EQUAL | EQUAL_EQUAL ) comparison )*
+                        ;
+
+    comparison          → addition ( ( GREATER | GREATER_EQUAL | LESS | LESS_EQUAL ) addition )*
+                        ;
+
+    addition            → multiplication ( ( MINUS | PLUS )  multiplication )*
+                        ;
+
+    multiplication      → unary ( ( SLASH | STAR ) unary )*
+                        ;
+
+    unary               → ( BANG | MINUS ) unary
+                        | call
+                        ;
+
+    call                → primary ( LEFT_PAREN arguments? RIGHT_PAREN )*
+                        ;
+
+    arguments           → expression ( COMMA expression )*
+                        ;
+
+    primary             → NUMBER
+                        | STRING
+                        | FALSE
+                        | TRUE
+                        | NIL
+                        | LEFT_PAREN expression RIGHT_PAREN
+                        | IDENTIFIER
+                        | lambda
+                        ;
+
+    lambda              → FUN LEFT_PAREN parameters? RIGHT_PAREN body
+                        ;f
