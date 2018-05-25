@@ -1,5 +1,7 @@
 # Compiled class file
-*.class
+# Allow compiled class files in pre-built branch
+#*.class
+
 
 # Log file
 *.log
@@ -23,4 +25,5 @@
 hs_err_pid*
 
 # build files
-dist
+# Allow in pre-build branch
+#dist
