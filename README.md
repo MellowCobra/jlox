@@ -10,7 +10,7 @@ The Context Free Grammar for lox in this interpreter can be found in [CFG.md](ht
 
 Must have java and the `jdk` installed, as well as `cmake`.
 
-I am working on a pre-built branch which will house the built code in the `dist` directory.
+If you do not wish to build the files yourself, the built files are included on the `pre-built` branch.
 
 Build with
 
