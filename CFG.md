@@ -39,7 +39,7 @@ Terminals
 *   WHILE `while`
 *   EOF `\0`
 
-Grammar:
+Productions:
 
     program             → declaration* EOF
                         ;
@@ -137,4 +137,4 @@ Grammar:
                         ;
 
     lambda              → FUN LEFT_PAREN parameters? RIGHT_PAREN body
-                        ;f
+                        ;
