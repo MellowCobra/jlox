@@ -44,10 +44,10 @@ The Native Library for Lox is currently limited to 3 functions:
 
 ### clock
 
-`clock () _returns_ Number`
+`clock () returns Number`
 
-    Returns the difference between the current time and midnight, January 1, 1970 UTC, measured in seconds.
-    Useful for benchmarking.
+Returns the difference between the current time and midnight, January 1, 1970 UTC, measured in seconds.
+Useful for benchmarking.
 
 ```
 var begin = clock();
@@ -69,9 +69,9 @@ print end - begin; // The time it took to run in seconds
 
 ### print
 
-`print ( value ) _returns_ nil`
+`print ( value ) returns nil`
 
-    Prints the input value to stdout.
+Prints the input value to stdout.
 
 ```
 print("The result of 2 + 2 is " + 2 + 2);
@@ -85,9 +85,9 @@ print "The result of 2 + 2 is " + 2 + 2;
 
 ### stdin
 
-`stdin () _returns_ String`
+`stdin () returns String`
 
-    Returns a line read from stdin.
+Returns a line read from stdin.
 
 ```
 print "What is your name?";
