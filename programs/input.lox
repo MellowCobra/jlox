@@ -1,0 +1,3 @@
+print "What is your name?";
+var name = stdin();
+print "Hello, " + name + "!";
