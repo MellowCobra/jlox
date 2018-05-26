@@ -4,12 +4,13 @@
 
 ## Grammar
 
-The Context Free Grammar for lox in this interpreter can be found in [CFG.md](https://github.com/MellowCobra/jlox/blob/master/CFG.md)
+The Context Free Grammar for lox in this interpreter can be found in [CFG.md](https://github.com/MellowCobra/jlox/blob/pre-built/CFG.md)
 
 # Build and Run
 
-Must have java and the `jdk` installed, as well as `cmake`
-I am working on a pre-built branch which will house the built code in the `dist` directory.
+Must have java and the `jdk` installed as well as `cmake` in order to build.
+
+This is the `pre-built` branch of jlox, which has all the `.class` files compiled for you.
 
 Build with
 
